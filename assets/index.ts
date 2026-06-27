@@ -4,6 +4,8 @@ import hero_img from "@/assets/images/hero_img.png";
 import hero_bottom_img from "@/assets/images/hero_bottom_img.png";
 import pet1 from "@/assets/images/pet1.png";
 import footer from "@/assets/images/footer.png";
+import adoption_bg from "@/assets/images/adoption_bg.png";
+import dog1 from "@/assets/images/dog1.png";
 
 export const assets = {
   logo,
@@ -12,4 +14,6 @@ export const assets = {
   hero_bottom_img,
   pet1,
   footer,
+  adoption_bg,
+  dog1,
 };
