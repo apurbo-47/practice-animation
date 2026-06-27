@@ -1,11 +1,19 @@
 import { assets } from "@/assets";
 import { IconArrowUpRight } from "@tabler/icons-react";
+import * as motion from "framer-motion/client";
 import Image from "next/image";
 import React from "react";
+import { animations } from "../animations/animation";
 
 const HeroSection = () => {
   return (
-    <div className="max-w-330 mx-auto relative  ">
+    <motion.div
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="max-w-330 mx-auto relative  "
+    >
       <div className="mt-7 md:mt-15">
         <Image
           src={assets.hero_title}
@@ -43,7 +51,7 @@ const HeroSection = () => {
           className="w-full h-18 object-cover"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

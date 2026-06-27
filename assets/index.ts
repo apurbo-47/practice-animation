@@ -6,6 +6,7 @@ import pet1 from "@/assets/images/pet1.png";
 import footer from "@/assets/images/footer.png";
 import adoption_bg from "@/assets/images/adoption_bg.png";
 import dog1 from "@/assets/images/dog1.png";
+import faq from "@/assets/images/faq.png";
 
 export const assets = {
   logo,
@@ -16,4 +17,5 @@ export const assets = {
   footer,
   adoption_bg,
   dog1,
+  faq,
 };

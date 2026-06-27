@@ -5,6 +5,8 @@ import { useState } from "react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import Image from "next/image";
 import { assets } from "@/assets";
+import { motion } from "framer-motion";
+import { animations } from "@/components/animations/animation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +20,17 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-xl">
-      <div className="max-w-330 mx-auto px-5 xl:px-0 ">
+    <motion.header
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-xl"
+    >
+      <motion.div
+        variants={animations.fadeDown}
+        className="max-w-330 mx-auto px-5 xl:px-0 "
+      >
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold tracking-tight">
@@ -90,7 +101,7 @@ export default function Navbar() {
             </Link>
           </nav>
         </div>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }
