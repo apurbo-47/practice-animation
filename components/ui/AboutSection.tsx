@@ -7,14 +7,23 @@ import {
   IconHours24,
   IconStarFilled,
 } from "@tabler/icons-react";
+import * as motion from "framer-motion/client";
+import { animations } from "../animations/animation";
 
 const AboutSection = () => {
   const avatars = [user1, user2, user1, user2];
 
   return (
-    <div id="about" className="max-w-330 mx-auto py-10 lg:py-15">
+    <motion.div
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      id="about"
+      className="max-w-330 mx-auto py-10 lg:py-15 overflow-hidden"
+    >
       <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-10 lg:gap-30 px-5 lg:px-0">
-        <div className="">
+        <motion.div variants={animations.fadeRight} className="">
           <button className="border border-dashed border-white rounded-full bg-[#F25027] px-4 py-2 text-md text-white">
             Who We Are
           </button>
@@ -37,18 +46,25 @@ const AboutSection = () => {
               Customer worldwide
             </span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="max-w-4xl mx-0">
+        <motion.div variants={animations.fadeLeft} className="max-w-4xl mx-0">
           <h1 className="text-[clamp(24px,4vw,44px)] text-black font-semibold leading-tight">
             At Pet Care, we keep your furry friends happy, healthy, and loved
             with trusted care and personalized services that bring comfort,
             safety, and joy to every pet with gentle attention and endless
             affection.
           </h1>
-        </div>
+        </motion.div>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 lg:mt-20 px-5 lg:px-0">
+
+      <motion.div
+        variants={animations.fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 lg:mt-20 px-5 lg:px-0"
+      >
         <div className="flex flex-col items-center justify-center bg-[#F2B527] rounded-2xl w-full h-65 ">
           <div className="flex flex-col items-center justify-center">
             <IconHours24 size={70} />
@@ -84,8 +100,8 @@ const AboutSection = () => {
             Based on Reviews from <br /> Happy Pat Owners Worldwide
           </p>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

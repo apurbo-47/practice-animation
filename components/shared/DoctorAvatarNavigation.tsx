@@ -33,6 +33,7 @@ export default function DoctorAvatarNavigation({
         {/* Appointment Button */}
         <button
           className="
+          flex gap-2
           rounded-full
           bg-[#F25027]
           px-7
@@ -47,6 +48,9 @@ export default function DoctorAvatarNavigation({
         "
         >
           Make Appointment
+          <span>
+            <IconArrowUpRight />
+          </span>
         </button>
       </div>
 
