@@ -25,6 +25,7 @@ export default function PetAdoption() {
 
   return (
     <section
+      id="adoption"
       className="relative py-7 px-5 lg:px-0 lg:py-15 bg-cover bg-center"
       style={{
         backgroundImage: `url('${assets.adoption_bg.src}')`,

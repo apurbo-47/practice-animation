@@ -51,7 +51,7 @@ const plans = [
 
 export default function SubscriptionSection() {
   return (
-    <section className="py-7 lg:py-15 ">
+    <section id="plan" className="py-7 lg:py-15 ">
       <div className="max-w-330 mx-auto px-5 lg:px-0">
         <div className="text-center mb-12">
           <button className="border border-dashed border-white rounded-full bg-[#F25027] px-4 py-2 text-md text-white">

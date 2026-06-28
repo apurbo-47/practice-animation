@@ -15,8 +15,8 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "About Us", href: "#about" },
     { label: "Services", href: "#service" },
-    { label: "Adoption", href: "/adoption" },
-    { label: "Plan", href: "/plan" },
+    { label: "Adoption", href: "#adoption" },
+    { label: "Plan", href: "#plan" },
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function Navbar() {
           {/* Desktop Button */}
           <div className="hidden md:block">
             <Link
-              href="/contact"
+              href="#contact"
               className="rounded-lg bg-[#F25027] px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-105"
             >
               Contact Us
@@ -92,13 +92,13 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <Link
-              href="/contact"
+            <button
+              id="#contact"
               onClick={() => setIsOpen(false)}
               className="mt-2 w-fit rounded-lg bg-[#F25027] px-6 py-3 text-sm font-medium text-white"
             >
               Contact Us
-            </Link>
+            </button>
           </nav>
         </div>
       </motion.div>
