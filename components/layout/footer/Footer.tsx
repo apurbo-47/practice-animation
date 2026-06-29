@@ -1,6 +1,6 @@
 import { assets } from "@/assets";
+import { animations } from "@/components/animations/animation";
 import {
-  IconBrandFacebookFilled,
   IconBrandInstagram,
   IconBrandTiktok,
   IconBrandX,
@@ -9,6 +9,7 @@ import {
   IconMapPin,
   IconBrandFacebook,
 } from "@tabler/icons-react";
+import * as motion from "framer-motion/client";
 import Image from "next/image";
 
 export default function Footer() {
@@ -22,12 +23,18 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-linear-to-b from-black via-[#140705] to-[#6A240F] text-white">
+    <motion.footer
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="relative overflow-hidden bg-linear-to-b from-black via-[#140705] to-[#6A240F] text-white"
+    >
       <div className="mx-auto max-w-330 px-5 py-7 lg:py-15 ">
         {/* Top Content */}
         <div className="flex flex-col lg:flex-row justify-between gap-10 ">
           {/* Left */}
-          <div>
+          <motion.div variants={animations.fadeUp}>
             <h3 className="max-w-md text-[clamp(20px,3vw,34px)] leading-tight font-medium">
               At PawCare, we connect pet parents with trusted care, expert
               support, and everything their pets need.
@@ -50,10 +57,10 @@ export default function Footer() {
                 <IconBrandX size={18} />
               </SocialIcon>
             </div>
-          </div>
+          </motion.div>
 
           {/* Center */}
-          <div>
+          <motion.div variants={animations.fadeUp}>
             <div className="mb-6 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-white" />
               <h4 className="text-xl ">Quick Links</h4>
@@ -69,10 +76,10 @@ export default function Footer() {
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right */}
-          <div className="">
+          <motion.div variants={animations.fadeUp} className="">
             <div className="mb-6 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-white" />
               <h4 className="text-xl ">Contact</h4>
@@ -98,16 +105,28 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Huge Brand */}
-        <div className="mt-10 ">
+        <motion.div
+          variants={animations.fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-10 "
+        >
           <Image src={assets.footer} alt="footer" className="object-cover" />
-        </div>
+        </motion.div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-full border border-[#B3B3B3]  px-6 py-4 text-sm text-white/80 md:flex-row transition">
+        <motion.div
+          variants={animations.fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-12 flex flex-col items-center justify-between gap-4 rounded-full border border-[#B3B3B3]  px-6 py-4 text-sm text-white/80 md:flex-row transition"
+        >
           <p>© 2026 Pawcare. All rights reserved</p>
 
           <div className="flex items-center gap-6">
@@ -115,9 +134,9 @@ export default function Footer() {
 
             <button className="hover:text-white">Terms of Service</button>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
 
