@@ -107,18 +107,12 @@ export default function PetAdoption() {
               {pet.description}
             </p>
 
-            <div className="flex gap-3 mt-10 flex-wrap">
-              {pets.map((item, index) => (
+            <div className="w-full flex justify-between items-center gap-5 mt-10 ">
+              {pets.slice(1).map((item, index) => (
                 <button
                   key={item.id}
-                  onClick={() => setActive(index)}
-                  className={`rounded-full px-5 py-2 border transition
-
-                  ${
-                    active === index
-                      ? "bg-[#F25027] text-white border-[#F25027]"
-                      : "bg-white border border-black/10"
-                  }
+                  onClick={() => setActive(index + 1)}
+                  className={`w-full rounded-full py-2 border border-[#E6E6E6] transition
                   `}
                 >
                   {item.breed}

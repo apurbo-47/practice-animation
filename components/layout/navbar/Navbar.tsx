@@ -34,7 +34,12 @@ export default function Navbar() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold tracking-tight">
-            <Image src={assets.logo} alt="logo" className="h-8 object-cover" />
+            <Image
+              src={assets.logo}
+              alt="logo"
+              priority
+              className="h-8 object-cover"
+            />
           </Link>
 
           {/* Desktop Nav */}

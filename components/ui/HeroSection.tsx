@@ -18,6 +18,7 @@ const HeroSection = () => {
         <Image
           src={assets.hero_title}
           alt=""
+          priority
           className="w-full  object-cover"
         />
       </motion.div>
@@ -46,6 +47,7 @@ const HeroSection = () => {
         <Image
           src={assets.hero_img}
           alt="hero"
+          priority
           className="w-full object-cover"
         />
       </motion.div>
@@ -54,6 +56,7 @@ const HeroSection = () => {
         <Image
           src={assets.hero_bottom_img}
           alt=""
+          priority
           className="w-full h-18 object-cover"
         />
       </div>
