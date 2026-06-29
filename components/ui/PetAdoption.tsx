@@ -9,6 +9,8 @@ import {
   IconChevronRight,
 } from "@tabler/icons-react";
 import { assets } from "@/assets";
+import { motion } from "framer-motion";
+import { animations } from "../animations/animation";
 
 export default function PetAdoption() {
   const [active, setActive] = useState(0);
@@ -24,7 +26,11 @@ export default function PetAdoption() {
   };
 
   return (
-    <section
+    <motion.section
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
       id="adoption"
       className="relative py-7 px-5 lg:px-0 lg:py-15 bg-cover bg-center"
       style={{
@@ -35,7 +41,10 @@ export default function PetAdoption() {
         <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-5">
           {/* LEFT */}
 
-          <div className="relative overflow-hidden rounded-[20px] h-full">
+          <motion.div
+            variants={animations.fadeRight}
+            className="relative overflow-hidden rounded-[20px] h-full"
+          >
             <Image
               src={pet.image}
               fill
@@ -72,12 +81,21 @@ export default function PetAdoption() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* RIGHT */}
 
-          <div className="flex flex-col">
-            <div className="flex justify-between">
+          <motion.div
+            variants={animations.stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex flex-col"
+          >
+            <motion.div
+              variants={animations.fadeUp}
+              className="flex justify-between"
+            >
               <button className="border border-dashed border-white rounded-full bg-[#F25027] px-4 py-2 text-md text-white">
                 Adoption
               </button>
@@ -97,41 +115,59 @@ export default function PetAdoption() {
                   <IconChevronRight size={24} />
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            <h1 className="mt-5 text-[clamp(24px,4.5vw,46px)] font-semibold leading-tight">
+            <motion.h1
+              variants={animations.fadeUp}
+              className="mt-5 text-[clamp(24px,4.5vw,46px)] font-semibold leading-tight"
+            >
               Cute Pets Waiting to Find Their Forever Loving Home
-            </h1>
+            </motion.h1>
 
-            <p className="max-w-lg mt-4 text-[clamp(14px,1.5vw,18px)] text-[#4C4C4C] leading-8">
+            <motion.p
+              variants={animations.fadeUp}
+              className="max-w-lg mt-4 text-[clamp(14px,1.5vw,18px)] text-[#4C4C4C] leading-8"
+            >
               {pet.description}
-            </p>
+            </motion.p>
 
-            <div className="w-full flex justify-between items-center gap-5 mt-10 ">
-              {pets.slice(1).map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => setActive(index + 1)}
-                  className={`w-full rounded-full py-2 border border-[#E6E6E6] transition
+            <motion.div
+              variants={animations.stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <motion.div
+                variants={animations.fadeUp}
+                className="w-full flex justify-between items-center gap-5 mt-10 "
+              >
+                {pets.slice(1).map((item, index) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActive(index + 1)}
+                    className={`w-full rounded-full py-2 border border-[#E6E6E6] transition
                   `}
-                >
-                  {item.breed}
-                </button>
-              ))}
-            </div>
+                  >
+                    {item.breed}
+                  </button>
+                ))}
+              </motion.div>
 
-            <div className="grid grid-cols-3 gap-4 mt-3.5">
-              {pets.slice(1).map((item, index) => (
-                <div
-                  key={item.id}
-                  onClick={() => setActive(index + 1)}
-                  className="relative h-64 rounded-[20px] overflow-hidden cursor-pointer group"
-                >
-                  <Image
-                    src={item.image}
-                    fill
-                    alt=""
-                    className={`object-cover transition duration-500
+              <motion.div
+                variants={animations.fadeUp}
+                className="grid grid-cols-3 gap-4 mt-3.5"
+              >
+                {pets.slice(1).map((item, index) => (
+                  <div
+                    key={item.id}
+                    onClick={() => setActive(index + 1)}
+                    className="relative h-64 rounded-[20px] overflow-hidden cursor-pointer group"
+                  >
+                    <Image
+                      src={item.image}
+                      fill
+                      alt=""
+                      className={`object-cover transition duration-500
 
                     ${
                       active === index + 1
@@ -139,17 +175,18 @@ export default function PetAdoption() {
                         : "group-hover:scale-105"
                     }
                     `}
-                  />
+                    />
 
-                  {active === index + 1 && (
-                    <div className="absolute inset-0 ring-4 ring-[#F25027] rounded-2xl"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+                    {active === index + 1 && (
+                      <div className="absolute inset-0 ring-4 ring-[#F25027] rounded-2xl"></div>
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

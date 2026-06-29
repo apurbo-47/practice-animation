@@ -4,6 +4,8 @@ import product2 from "@/assets/images/product2.png";
 import product3 from "@/assets/images/product3.png";
 import product4 from "@/assets/images/product4.png";
 import product5 from "@/assets/images/product5.png";
+import * as motion from "framer-motion/client";
+import { animations } from "../animations/animation";
 
 type Product = {
   id: number;
@@ -83,12 +85,22 @@ const products: Product[] = [
 
 export default function ProductGrid() {
   return (
-    <section className=" pt-7 lg:pt-12">
+    <motion.section
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className=" pt-7 lg:pt-12"
+    >
       <div className=" px-5 lg:px-0">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <div
+          {products.map((product, index) => (
+            <motion.div
               key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.15 }}
+              viewport={{ once: true }}
               className="rounded-2xl p-5 text-white transition-all duration-300 hover:-translate-y-2"
               style={{ backgroundColor: product.bgColor }}
             >
@@ -123,10 +135,10 @@ export default function ProductGrid() {
                   Add To Cart
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -8,6 +8,8 @@ import pet5 from "@/assets/images/pet5.png";
 import pet6 from "@/assets/images/pet6.png";
 import pet7 from "@/assets/images/pet7.png";
 import pet8 from "@/assets/images/pet8.png";
+import * as motion from "framer-motion/client";
+import { animations } from "../animations/animation";
 
 const services = [
   {
@@ -54,12 +56,22 @@ const services = [
 
 export default function PetServices() {
   return (
-    <section className="w-full mt-7 md:mt-15">
+    <motion.section
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="w-full mt-7 md:mt-15"
+    >
       <div className=" px-4 lg:px-0">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.15 }}
+              viewport={{ once: true }}
               className="group relative w-full h-90 overflow-hidden rounded-[20px] cursor-pointer"
             >
               <Image
@@ -90,10 +102,10 @@ export default function PetServices() {
                   <IconArrowUpRight size={20} strokeWidth={2.5} />
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

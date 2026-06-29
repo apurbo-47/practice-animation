@@ -1,12 +1,14 @@
 "use client";
 
 import { IconCheck } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import { animations } from "../animations/animation";
 
 const plans = [
   {
     name: "Elite Plan",
     price: "$49",
-    duration: "/month",
+    duration: "/Month",
     featured: false,
     features: [
       "Monthly health checkup",
@@ -19,7 +21,7 @@ const plans = [
   {
     name: "Premium Plan",
     price: "$99",
-    duration: "/month",
+    duration: "/Month",
     featured: true,
     features: [
       "Weekly health checkups",
@@ -34,7 +36,7 @@ const plans = [
   {
     name: "Ultimate Care",
     price: "$149",
-    duration: "/month",
+    duration: "/Month",
     featured: false,
     features: [
       "Daily health monitoring",
@@ -51,27 +53,59 @@ const plans = [
 
 export default function SubscriptionSection() {
   return (
-    <section id="plan" className="py-7 lg:py-15 ">
+    <motion.section
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      id="plan"
+      className="py-7 lg:py-15 "
+    >
       <div className="max-w-330 mx-auto px-5 lg:px-0">
-        <div className="text-center mb-12">
-          <button className="border border-dashed border-white rounded-full bg-[#F25027] px-4 py-2 text-md text-white">
+        <motion.div
+          variants={animations.stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-12"
+        >
+          <motion.button
+            variants={animations.fadeUp}
+            className="border border-dashed border-white rounded-full bg-[#F25027] px-4 py-2 text-md text-white"
+          >
             Pricing
-          </button>
+          </motion.button>
 
-          <h2 className="mt-5 text-[clamp(24px,4.5vw,48px)] leading-tight font-bold  max-w-3xl mx-auto ">
+          <motion.h2
+            variants={animations.fadeUp}
+            className="mt-5 text-[clamp(24px,4.5vw,48px)] leading-tight font-bold  max-w-3xl mx-auto "
+          >
             Choose the Perfect Care Plan for Your Pet’s Health and Happiness
-          </h2>
+          </motion.h2>
 
-          <p className="mt-5 text-[clamp(14px,1.5vw,18px)] text-[#4C4C4C] max-w-xl mx-auto">
+          <motion.p
+            variants={animations.fadeUp}
+            className="mt-5 text-[clamp(14px,1.5vw,18px)] text-[#4C4C4C] max-w-xl mx-auto"
+          >
             Choose from flexible and affordable care plans designed to support
             your pet’he perfect option that fits both your pet’s unique
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="grid gap-7.5 md:grid-cols-2 xl:grid-cols-3">
-          {plans.map((plan) => (
-            <div
+        <motion.div
+          variants={animations.stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          className="grid gap-7.5 md:grid-cols-2 xl:grid-cols-3"
+        >
+          {plans.map((plan, index) => (
+            <motion.div
               key={plan.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.3 }}
+              viewport={{ once: true }}
               className={`relative rounded-2xl p-7.5 transition-all duration-300 border flex flex-col
               ${
                 plan.featured
@@ -132,10 +166,10 @@ export default function SubscriptionSection() {
               >
                 Get Started
               </button>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
