@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { petSlides } from "@/constants/petSlider";
+import { animations } from "../animations/animation";
 
 export default function PetShowcaseSlider() {
   const [current, setCurrent] = useState(0);
@@ -19,7 +20,7 @@ export default function PetShowcaseSlider() {
   return (
     <div className="relative h-full  overflow-hidden rounded-[20px]">
       <AnimatePresence>
-        <motion.div className="absolute inset-0">
+        <motion.div variants={animations.fadeLeft} className="absolute inset-0">
           <Image
             src={petSlides[current].image}
             alt=""

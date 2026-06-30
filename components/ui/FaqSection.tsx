@@ -5,6 +5,8 @@ import { useState } from "react";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { faqs } from "@/constants/faqs";
 import { assets } from "@/assets";
+import { motion } from "framer-motion";
+import { animations } from "../animations/animation";
 
 export default function FaqSection() {
   const [activeFaq, setActiveFaq] = useState<number | null>(1);
@@ -14,11 +16,17 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="lg:p-15 p-7">
+    <motion.section
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      className="lg:p-15 p-7 overflow-hidden"
+    >
       <div className="max-w-330 mx-auto ">
-        <div className="grid items-stretch gap-6 lg:gap-10 lg:grid-cols-[40%_60%]">
+        <div className="grid items-stretch gap-6 lg:gap-10 lg:grid-cols-[40%_60%] ">
           {/* Left */}
-          <div className="flex flex-col">
+          <motion.div variants={animations.fadeRight} className="flex flex-col">
             <div>
               <button className="border border-dashed border-white rounded-full bg-[#F25027] px-4 py-2 text-md text-white">
                 Faqs
@@ -36,10 +44,10 @@ export default function FaqSection() {
                 className="w-full h-full  object-cover"
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Right */}
-          <div className="h-full">
+          <motion.div variants={animations.fadeLeft} className="h-full">
             <div className="space-y-5">
               {faqs.map((faq) => {
                 const isOpen = activeFaq === faq.id;
@@ -91,9 +99,9 @@ export default function FaqSection() {
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

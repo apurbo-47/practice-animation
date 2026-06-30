@@ -1,8 +1,10 @@
 "use client";
 
 import { testimonials } from "@/constants/testimonials";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import { animations } from "../animations/animation";
 
 export default function TestimonialSection() {
   const [activeId, setActiveId] = useState(2);
@@ -11,9 +13,18 @@ export default function TestimonialSection() {
     testimonials.find((item) => item.id === activeId) || testimonials[0];
 
   return (
-    <section className="max-w-330 mx-auto lg:flex gap-7.5 mt-10 ">
+    <motion.section
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      className="max-w-330 mx-auto lg:flex gap-7.5 mt-10 overflow-hidden "
+    >
       {/* Left Images */}
-      <div className="flex flex-col gap-5">
+      <motion.div
+        variants={animations.fadeRight}
+        className="flex flex-col gap-5"
+      >
         {testimonials.map((item) => {
           const active = item.id === activeId;
 
@@ -39,10 +50,13 @@ export default function TestimonialSection() {
             </button>
           );
         })}
-      </div>
+      </motion.div>
 
       {/* Right Content */}
-      <div className="relative rounded-2xl bg-[#F5F7FA] p-5 lg:p-10">
+      <motion.div
+        variants={animations.fadeLeft}
+        className="relative rounded-2xl bg-[#F5F7FA] p-5 lg:p-10"
+      >
         {/* <svg
           className="absolute z-50 right-6 top-4 h-24 w-24 text-gray-200"
           fill="currentColor"
@@ -75,7 +89,7 @@ export default function TestimonialSection() {
 
           <div className="flex text-[#FF8D28] text-2xl">★★★★★</div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

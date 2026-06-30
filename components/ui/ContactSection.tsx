@@ -1,10 +1,16 @@
 import { assets } from "@/assets";
 import ContactForm from "../shared/ContactForm";
 import PetShowcaseSlider from "../shared/PetShowcaseSlider";
+import * as motion from "framer-motion/client";
+import { animations } from "../animations/animation";
 
 export default function ContactSection() {
   return (
-    <section
+    <motion.section
+      variants={animations.stagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
       id="contact"
       className="relative py-7 px-5 lg:px-0 lg:py-15 bg-cover bg-center"
       style={{
@@ -20,6 +26,6 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
